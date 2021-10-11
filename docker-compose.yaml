@@ -1,0 +1,29 @@
+version: "3.7"
+ 
+services:
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile.dev
+      target: base
+    volumes:
+      - ./bot/src:/home/node/app/src
+      - ./bot/nodemon.json:/home/node/app/nodemon.json
+    container_name: ts-node-docker
+    command: npm run dev
+
+  redis:
+    image: 'redis:alpine'
+    container_name: redis-bot
+    ports:
+      - "6382:6379"
+    networks:
+      - sail
+
+networks:
+  sail:
+      driver: bridge
+
+volumes:
+  sailredis:
+      driver: local
