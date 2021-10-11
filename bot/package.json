@@ -4,9 +4,9 @@
   "description": "",
   "main": "node dist/main.js",
   "scripts": {
-    "start": "node dist/main.js",
-    "watch": "tsc -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_PATH=./build node build/main.js",
+    "build": "tsc -p .",
+    "dev": "nodemon src/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +14,14 @@
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/node": "^16.10.3",
+    "@types/redis": "^2.8.32",
     "dotenv": "^10.0.0",
+    "nodemon": "^2.0.13",
     "telegraf": "^4.4.2",
+    "ts-node": "^10.3.0",
     "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "redis": "^3.1.2"
   }
 }

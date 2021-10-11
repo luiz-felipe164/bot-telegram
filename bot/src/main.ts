@@ -1,5 +1,6 @@
 import { Telegraf } from 'telegraf'
 import { config } from 'dotenv';
+import { PubSubRedis } from './services/pubsub-redis';
 
 config();
 
