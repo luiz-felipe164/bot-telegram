@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "redis-messaging-manager": "^1.6.2"
-  }
-}
