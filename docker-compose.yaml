@@ -14,13 +14,54 @@ services:
       - sail
     command: npm run dev
 
+  app:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: api_bot
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./server/:/var/www
+      - ./server/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - sail
+
+  webserver:
+    image: nginx:alpine
+    container_name: webserver_bot
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8081:8081"
+      - "443:443"
+    volumes:
+      - ./server/:/var/www
+      - ./server/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - sail
+
+  mongodb:
+    container_name: mongodb_server
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - sail
+  
   redis:
     image: 'redis:alpine'
-    container_name: redis-bot
+    container_name: redis_bot
     ports:
       - "6379:6379"
     networks:
       - sail
+
 
 networks:
   sail:
