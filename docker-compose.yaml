@@ -31,6 +31,8 @@ services:
       - ./server/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - sail
+    links:
+      - redis
 
   webserver:
     image: nginx:alpine
@@ -58,7 +60,7 @@ services:
     image: 'redis:alpine'
     container_name: redis_bot
     ports:
-      - "6379:6379"
+      - "6382:6379"
     networks:
       - sail
 
