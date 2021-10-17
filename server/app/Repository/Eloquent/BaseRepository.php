@@ -2,8 +2,8 @@
 
 namespace App\Repository\Eloquent;
 
+use Jenssegers\Mongodb\Eloquent\Model;
 use App\Repository\EloquentRepositoryInterface;
-use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository implements EloquentRepositoryInterface
 {

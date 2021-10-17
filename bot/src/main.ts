@@ -48,6 +48,7 @@ class MainBot {
         this.bot.instance().on('message', async (ctx) => {
             const message: string = JSON.stringify(ctx.message)
             const response = await this.pub.publish(this.channel_pub, message)
+            console.log(message)
 
             if (response > 0) {
                 ctx.reply(Messages.REPLY)

@@ -3,10 +3,14 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use App\Services\NewMessageService;
 use Illuminate\Support\Facades\Redis;
 
 class NewMessageSubscribe extends Command
 {
+    protected $messageService;
+
     /**
      * The name and signature of the console command.
      *
@@ -26,9 +30,10 @@ class NewMessageSubscribe extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(NewMessageService $messageService)
     {
         parent::__construct();
+        $this->messageService = $messageService;
     }
 
     /**
@@ -39,8 +44,8 @@ class NewMessageSubscribe extends Command
     public function handle()
     {
         Redis::subscribe(['new_message'], function ($message) {
-            $message = json_decode($message);
-            Service
+            $message = json_decode($message, true);
+            $this->messageService->handle($message);
         });
     }
 }

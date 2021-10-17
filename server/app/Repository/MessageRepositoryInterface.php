@@ -4,9 +4,6 @@ namespace App\Repository;
 
 use Illuminate\Support\Collection;
 
-interface ShippingRepositoryInterface extends EloquentRepositoryInterface
+interface MessageRepositoryInterface extends EloquentRepositoryInterface
 {
-   public function all(): Collection;
-
-   public function search(string $term): Collection;
 }

@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 /**
  * Interface EloquentRepositoryInterface

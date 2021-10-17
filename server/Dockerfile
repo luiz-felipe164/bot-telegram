@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libonig-dev \
     libzip-dev \
+    libcurl4-openssl-dev \
+    pkg-config \
+    libssl-dev \
     locales \
     zip \
     jpegoptim optipng pngquant gifsicle \
@@ -28,7 +31,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install extensions
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
 RUN pecl install mongodb && docker-php-ext-enable mongodb
-RUN echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini
+# RUN echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

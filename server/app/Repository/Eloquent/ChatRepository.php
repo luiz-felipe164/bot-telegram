@@ -29,4 +29,9 @@ class ChatRepository extends BaseRepository implements ChatRepositoryInterface
             ->orWhere('vehicle_owner', 'like', "%{$term}%")
             ->get();
     }
+
+    public function findByChatId($chat_id)
+    {
+        return $this->model->where('contact_identifier', $chat_id)->first();
+    }
 }

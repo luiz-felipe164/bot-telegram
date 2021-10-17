@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 class Chat extends Model
 {
-    use HasFactory;
+    protected $collection = 'chats';
+
+    protected $fillable = [
+        'contact_identifier',
+        'platform_type',
+        'name'
+    ];
 }
