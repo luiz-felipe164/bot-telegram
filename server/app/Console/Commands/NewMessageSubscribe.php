@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use App\Services\NewMessageService;
 use Illuminate\Support\Facades\Redis;
 

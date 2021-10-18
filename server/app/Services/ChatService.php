@@ -28,4 +28,14 @@ class ChatService {
       return $this->chatRepository->create($chat);
   }
 
+  public function searchByName(string $name)
+  {
+      return $this->chatRepository->searchByName($name);
+  }
+
+  public function getAll()
+  {
+    return $this->chatRepository->all();
+  }
+
 }

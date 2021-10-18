@@ -22,12 +22,11 @@ class ChatRepository extends BaseRepository implements ChatRepositoryInterface
     /**
      * @return Collection
      */
-    public function search($term): Collection
+    public function searchByName(string $name): Collection
     {
         return $this->model
-            ->where('board', 'like', "%{$term}%")
-            ->orWhere('vehicle_owner', 'like', "%{$term}%")
-            ->get();
+                ->where('name', 'like', "%{$name}%")
+                ->get();
     }
 
     public function findByChatId($chat_id)
