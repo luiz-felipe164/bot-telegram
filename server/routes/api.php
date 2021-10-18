@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/chats', [ChatController::class, 'index']);
+Route::delete('/chats/{chatId}', [ChatController::class, 'destroy']);

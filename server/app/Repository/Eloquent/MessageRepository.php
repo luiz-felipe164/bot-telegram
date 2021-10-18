@@ -17,4 +17,11 @@ class MessageRepository extends BaseRepository implements MessageRepositoryInter
     {
         parent::__construct($model);
     }
+
+    public function getAllByChatId($chatId) 
+    {
+        return $this->model
+                    ->where('chat_id', $chatId)
+                    ->get();
+    }
 }

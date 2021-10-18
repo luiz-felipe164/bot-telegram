@@ -31,13 +31,13 @@ interface EloquentRepositoryInterface
    /**
     * @param array $attributes
     * @param $id
-    * @return Model
+    * @return bool
     */
    public function update(array $attributes, $id): bool;
 
    /**
     * @param $id
-    * @return Model
+    * @return bool
     */
    public function delete($id): bool;
 }

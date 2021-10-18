@@ -29,8 +29,8 @@ class ChatRepository extends BaseRepository implements ChatRepositoryInterface
                 ->get();
     }
 
-    public function findByChatId($chat_id)
+    public function findByChatId($chatId)
     {
-        return $this->model->where('contact_identifier', $chat_id)->first();
+        return $this->model->where('contact_identifier', $chatId)->first();
     }
 }

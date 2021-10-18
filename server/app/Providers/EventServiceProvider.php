@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Events\NewMessageBotEvent;
-use App\Listeners\NewMessageBotListener;
+use App\Events\DeletedChatEvent;
+use App\Listeners\DeletedChatListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -20,8 +20,8 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        NewMessageBotEvent::class => [
-            NewMessageBotListener::class
+        DeletedChatEvent::class => [
+            DeletedChatListener::class
         ]
     ];
 
