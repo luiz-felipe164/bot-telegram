@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    supervisor
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -42,11 +43,16 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
 COPY . /var/www
+COPY .env.example /var/www/.env
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
 
-RUN composer install
+# Make supervisor log directory
+RUN mkdir -p /var/log/supervisor
+
+# Copy local supervisord.conf to the conf.d directory
+COPY --chown=root:root supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Change current user to www
 USER www

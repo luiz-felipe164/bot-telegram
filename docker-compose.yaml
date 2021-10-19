@@ -33,6 +33,7 @@ services:
       - sail
     links:
       - redis
+    command: /usr/bin/supervisord
 
   webserver:
     image: nginx:alpine

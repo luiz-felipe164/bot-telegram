@@ -8,6 +8,8 @@ RUN npm i
 
 COPY . .
 
+COPY .env.example /home/node/app/.env
+
 FROM base as production
 
 ENV NODE_PATH=./dist
