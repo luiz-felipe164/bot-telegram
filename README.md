@@ -12,7 +12,7 @@ docker-compose up -d
 ```
 e espere os containers subirem.
 - Verifique se deu tudo certo executando o comando "docker ps", é necessario que tenha 5 containers, um app, mongodb, redis e nginx.
-- Acesse o container da aplicação executando o comando:
+- Acesse o container do servidor executando o comando:
 ```sh
 docker exec -it api_bot bash
 ```
@@ -49,5 +49,6 @@ Após isso, podemos sair do container e a api estará rodando em:
  ## Informações Adicionais
 Foi implementado os padrão de projeto Injeção de Dependência, Repository e Services, o código foi implementado com o princípio de POO, e utilizando um Banco de Dados NoSQL, e pub/sub com Redis.
 
-## Bibliotecas usadas
-- 
+## Bibliotecas usadas no projeto NODE
+- Telegraf | https://github.com/telegraf/telegraf
+- redis-messaging-manager | https://github.com/tomyitav/redis-messaging-manager
